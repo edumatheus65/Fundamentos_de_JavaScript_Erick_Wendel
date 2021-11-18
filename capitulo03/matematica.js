@@ -6,6 +6,13 @@ class Matematica {
     static multiplicar(valor1, valor2) {
         return valor1 * valor2
     }
+
+    static subtrair(valor1, valor2) {
+        return valor1 - valor2
+    }
+    static divisao(valor1, valor2) {
+        return valor1 / valor2
+    }
 }
 
 module.exports = Matematica
