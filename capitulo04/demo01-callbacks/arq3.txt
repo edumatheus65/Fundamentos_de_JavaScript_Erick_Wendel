@@ -1,2 +1,4 @@
-agora sim vou aprender java
-Scripit de verdade!!
+agora sim
+ vou aprender
+  javaScripit 
+  de verdade!!
