@@ -13,6 +13,9 @@ class JogoDaMemoria {
             { img: './arquivos/groot.png', name: 'groot'},
             { img: './arquivos/mulhermaravilha.png', name: 'mulhermaravilha'},
         ]
+
+        this.iconePadrao = './arquivos/padrao.png'
+        this.heroisEscondidos = []
         
     }
 
@@ -50,6 +53,38 @@ class JogoDaMemoria {
         this.tela.atualizarImagens(copias)
 
         this.tela.atualizarImagens(copias)
+        // Vamos esperar 1 segundo para atualizar a tela
+        setTimeout(() => {
+            this.esconderHerois(copias)
+        }, 1000);
+    }
+
+    esconderHerois(herois) {
+        // Vamos trocar a imagem de todos herois existentes pelo icone padrão.
+        // Como nos fizemos no construtor , vamos extrair somente o necessário
+        // Então dentro das chaves, vamos extrair somente o nome e o id
+        // O source nesse caso não importa
+        // E como está na mesma linha eu vou criar parenteses e abrir chaves e 
+        // retornar um objeto com os valores que eu quero
+        // Se eu não tenho lógica dentro do .map/ .sort eu posso retornar na mesma linha
+        // Nesse caso está entre parenteses para retornar um objeto na mesma linha
+        // Explicando a sixtaxe: O id está sem os : dois pontos, pois internamente o JS vai olhar para
+        // essa variável e vai olhar para o contexto atual. A variavel já foi criada como id então o JS
+        // irá pressupor que se não colocamos o : na frente, é para ele olhar aquele id.
+        // O nome e o id irão pegar essas variaveis que vieram por parametro dentro do map
+        // Daí só vamos alterar a imagem e vou colocar o icone padrão dentro dessa imagem     
+        // Usando a sintaxe dentro dos parenteses({ chave: 1}) estamos falando que vamos retornar
+        // o que estiver dentro dos parenteses
+        // quando não usamos : (exemplo do id), o JS entende que o nome é o mesmo do valor . Ex. id: id, vira id,   
+        const heroisOcultos = herois.map(( { nome, id}) => ({
+            id,
+            nome,
+            img: this.iconePadrao
+        }))
+        // Atualizamos a tela com herois ocultos
+        this.tela.atualizarImagens(heroisOcultos)
+        // Guardamos os herois para trabalhar com eles depois
+        this.heroisOcultos = heroisOcultos 
     }
     jogar() {
         this.embaralhar()
